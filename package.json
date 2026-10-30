@@ -1,0 +1,25 @@
+{
+  "name": "yolo-themes-showcase",
+  "version": "1.0.0",
+  "description": "A design-system showcase deck rendered for every Yolo theme",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "clean": "rm -rf _site",
+    "sync-themes": "cp ../yolo-11ty/src/_data/themes.json src/_data/themes.json",
+    "deploy": "npm run build && firebase deploy --only hosting"
+  },
+  "keywords": [
+    "eleventy",
+    "11ty",
+    "slides",
+    "design-system",
+    "themes"
+  ],
+  "author": "Corbs",
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}

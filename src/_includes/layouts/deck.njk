@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yolo {{ theme.name }} — Design System Showcase</title>
+<meta name="description" content="An eleven-slide tour of the Yolo {{ theme.name }} theme: color tokens, typefaces, components and both modes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="/assets/deck-reset.css">
+<link rel="stylesheet" href="/assets/deck-fonts.css">
+<link rel="stylesheet" href="/assets/deck-shell.css">
+<style>
+/* Every color in the slides resolves through one of these fourteen tokens.
+   The values come straight from yolo-11ty's themes.json. */
+:root {
+  --sl-d-bg: {{ theme.dark.bg }};
+  --sl-d-surface: {{ theme.dark.surface }};
+  --sl-d-border: {{ theme.dark.border }};
+  --sl-d-text: {{ theme.dark.text }};
+  --sl-d-heading: {{ theme.dark.heading }};
+  --sl-d-primary: {{ theme.dark.primary }};
+  --sl-d-string: {{ theme.dark.shString }};
+  --sl-d-comment: {{ theme.dark.shComment }};
+
+  --sl-d-kw: {{ theme.dark.shKeyword }};
+  --sl-d-str: {{ theme.dark.shString }};
+  --sl-d-fn: {{ theme.dark.shFunction }};
+  --sl-d-var: {{ theme.dark.shVariable }};
+  --sl-d-com: {{ theme.dark.shComment }};
+
+  --sl-l-bg: {{ theme.light.bg }};
+  --sl-l-surface: {{ theme.light.surface }};
+  --sl-l-border: {{ theme.light.border }};
+  --sl-l-text: {{ theme.light.text }};
+  --sl-l-heading: {{ theme.light.heading }};
+  --sl-l-primary: {{ theme.light.primary }};
+}
+html { background: var(--sl-d-bg); }
+body { background: var(--sl-d-bg); }
+
+/* Back to the theme list. Hidden while presenting. */
+.deck-home {
+  position: fixed;
+  z-index: 4;
+  left: 16px;
+  bottom: 16px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--sl-d-text) 35%, transparent);
+  background: color-mix(in srgb, var(--sl-d-bg) 80%, transparent);
+  color: var(--sl-d-text);
+  font: 12px/1.5 system-ui, sans-serif;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+}
+.deck-home:hover {
+  border-color: var(--sl-d-primary);
+  color: var(--sl-d-primary);
+}
+@media print {
+  .deck-home { display: none; }
+}
+</style>
+<script type="application/json" id="deck-motion">{{ motion | dump | safe }}</script>
+<script src="/assets/deck.js"></script>
+</head>
+<body>
+<main style="font:16px / 24px ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif;color:var(--sl-d-text)">
+{% include "deck/slides.njk" %}
+</main>
+<div class="deck-pager" aria-hidden="true"></div>
+<a class="deck-home" href="/">← all themes</a>
+</body>
+</html>

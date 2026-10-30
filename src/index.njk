@@ -1,0 +1,82 @@
+---
+permalink: /index.html
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.title }} — {{ themeList | length }} decks</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="/assets/index.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">// yolo-11ty &middot; design system</p>
+    <h1>{{ site.title }}</h1>
+    <p>
+      {{ site.description }} Pick a theme to open its eleven-slide deck —
+      color tokens, typefaces, components and both modes, painted in that
+      theme's own palette.
+    </p>
+    <p class="count">{{ themeList | length }} themes &middot; {{ themes.groups | length }} families</p>
+  </header>
+
+  {% for group in themes.groups %}
+  <section class="group">
+    <h2>{{ group.label }} <span>{{ group.themes | length }} themes</span></h2>
+    <ul class="grid">
+      {% for theme in group.themes %}
+      <li>
+        <a class="card" href="/decks/{{ theme.id }}/">
+          <span class="preview">
+            <span class="mode" style="background: {{ theme.dark.bg }}; color: {{ theme.dark.text }}">
+              <b style="color: {{ theme.dark.heading }}">Aa</b>
+              <span class="chips">
+                <i style="background: {{ theme.dark.primary }}"></i>
+                <i style="background: {{ theme.dark.link }}"></i>
+                <i style="background: {{ theme.dark.surface }}; box-shadow: inset 0 0 0 1px {{ theme.dark.border }}"></i>
+                <i style="background: {{ theme.dark.shString }}"></i>
+                <i style="background: {{ theme.dark.shComment }}"></i>
+              </span>
+              <em>dark</em>
+            </span>
+            <span class="mode" style="background: {{ theme.light.bg }}; color: {{ theme.light.text }}">
+              <b style="color: {{ theme.light.heading }}">Aa</b>
+              <span class="chips">
+                <i style="background: {{ theme.light.primary }}"></i>
+                <i style="background: {{ theme.light.link }}"></i>
+                <i style="background: {{ theme.light.surface }}; box-shadow: inset 0 0 0 1px {{ theme.light.border }}"></i>
+                <i style="background: {{ theme.light.shString }}"></i>
+                <i style="background: {{ theme.light.shComment }}"></i>
+              </span>
+              <em>light</em>
+            </span>
+          </span>
+          <span class="meta">
+            <strong>{{ theme.name }}</strong>
+            <code>{{ theme.id }}</code>
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+
+  <footer class="foot">
+    <p>
+      Every deck is themed from <a href="{{ site.repo }}">yolo-11ty</a>'s
+      <code>themes.json</code>.
+      Arrow keys or scroll to advance; <code>f</code> for fullscreen.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

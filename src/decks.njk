@@ -1,0 +1,10 @@
+---
+pagination:
+  data: themeList
+  size: 1
+  alias: theme
+permalink: "/decks/{{ theme.id }}/index.html"
+layout: layouts/deck.njk
+eleventyComputed:
+  title: "Yolo {{ theme.name }}"
+---
