@@ -1,5 +1,7 @@
 # yolo-themes-showcase
 
+**Live demo: [yolo-themes-showcase.web.app](https://yolo-themes-showcase.web.app)**
+
 The Yolo design-system showcase deck, rendered once for **every theme in
 [yolo-11ty](https://github.com/corbtastik/yolo-11ty)** — 67 decks, 11 slides
 each, plus an index that lists them all.
